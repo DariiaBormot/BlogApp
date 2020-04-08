@@ -2,19 +2,21 @@
 using BlogApp.Models;
 using BlogBL.Interfaces;
 using BlogBL.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Web;
 using System.Web.Mvc;
 
 namespace BlogApp.Controllers
 {
-    public class PostController : Controller
+    public class CommentsController : Controller
     {
-        private IPostService _service;
+        private ICommentService _service;
 
         private IMapper _mapper;
 
-        public PostController(IPostService service, IMapper mapper)
+        public CommentsController(ICommentService service, IMapper mapper)
         {
             _service = service;
             _mapper = mapper;
@@ -23,15 +25,8 @@ namespace BlogApp.Controllers
         public ActionResult Index()
         {
             var postsBL = _service.GetAll().ToList();
-            var mapedPosts = _mapper.Map<IEnumerable<PostViewModel>>(postsBL);
-            return View(mapedPosts);
-        }
-
-        public ActionResult Details(int id)
-        {
-            var modelBL = _service.GetById(id);
-            var viewModel = _mapper.Map<PostViewModel>(modelBL);
-            return View(viewModel);
+            var postsPL = _mapper.Map<IEnumerable<CommentViewModel>>(postsBL);
+            return View(postsPL);
         }
 
         // GET: Post/Create
@@ -42,11 +37,15 @@ namespace BlogApp.Controllers
 
         // POST: Post/Create
         [HttpPost]
-        public ActionResult Create(PostViewModel model)
+        public ActionResult Create(CommentViewModel model)
         {
             try
             {
-                var modelBL = _mapper.Map<PostModel>(model);
+                if (!ModelState.IsValid)
+                {
+                    return View(model);
+                }
+                var modelBL = _mapper.Map<CommentModel>(model);
                 _service.Create(modelBL);
                 return RedirectToAction("Index");
             }
@@ -64,11 +63,15 @@ namespace BlogApp.Controllers
 
         // POST: Post/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, PostViewModel model)
+        public ActionResult Edit(int id, CommentViewModel model)
         {
             try
             {
-                var modelBL = _mapper.Map<PostModel>(model);
+                if (!ModelState.IsValid)
+                {
+                    return View(model);
+                }
+                var modelBL = _mapper.Map<CommentModel>(model);
                 _service.Update(modelBL);
                 return RedirectToAction("Index");
             }
@@ -90,7 +93,6 @@ namespace BlogApp.Controllers
         {
             try
             {
-
                 _service.Delete(id);
                 return RedirectToAction("Index");
             }

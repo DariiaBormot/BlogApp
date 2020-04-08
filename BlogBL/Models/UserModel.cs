@@ -13,6 +13,7 @@ namespace BlogBL.Models
         public string LastName { get; set; }
         public string Avatar { get; set; }
         public DateTime RegistrationDate { get; set; }
+        public string Email { get; set; }
         public IEnumerable<PostModel> Posts { get; set; }
     }
 }

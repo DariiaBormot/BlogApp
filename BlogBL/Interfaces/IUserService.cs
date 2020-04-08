@@ -7,12 +7,7 @@ using System.Threading.Tasks;
 
 namespace BlogBL.Interfaces
 {
-    public interface IUserService
+    public interface IUserService : IGenereicService<UserModel>
     {
-        IEnumerable<UserModel> GetAll();
-        void Create(UserModel item);
-        void Update(UserModel item);
-        void Delete(int id);
-        UserModel GetById(int id);
     }
 }

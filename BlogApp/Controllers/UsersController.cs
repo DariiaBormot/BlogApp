@@ -10,13 +10,13 @@ using System.Web.Mvc;
 
 namespace BlogApp.Controllers
 {
-    public class UserController : Controller
+    public class UsersController : Controller
     {
         private IUserService _service;
 
         private IMapper _mapper;
 
-        public UserController(IUserService service, IMapper mapper)
+        public UsersController(IUserService service, IMapper mapper)
         {
             _service = service;
             _mapper = mapper;
@@ -32,9 +32,9 @@ namespace BlogApp.Controllers
         // GET: User/Details/5
         public ActionResult Details(int id)
         {
-            var modelBL = _service.GetById(id);
-            var viewModel = _mapper.Map<UserViewModel>(modelBL);
-            return View(viewModel);
+            var usersBL = _service.GetById(id);
+            var usersPL = _mapper.Map<UserViewModel>(usersBL);
+            return View(usersPL);
         }
 
         // GET: User/Create
@@ -49,6 +49,10 @@ namespace BlogApp.Controllers
         {
             try
             {
+                if (!ModelState.IsValid)
+                {
+                    return View(model);
+                }
                 var modelBL = _mapper.Map<UserModel>(model);
                 _service.Create(modelBL);
                 return RedirectToAction("Index");
@@ -71,6 +75,10 @@ namespace BlogApp.Controllers
         {
             try
             {
+                if (!ModelState.IsValid)
+                {
+                    return View(model);
+                }
                 var modelBL = _mapper.Map<UserModel>(model);
                 _service.Update(modelBL);
                 return RedirectToAction("Index");
@@ -96,7 +104,6 @@ namespace BlogApp.Controllers
                 // TODO: Add delete logic here
                 _service.Delete(id);
                 return RedirectToAction("Index");
-
             }
             catch
             {

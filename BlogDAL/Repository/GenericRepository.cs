@@ -44,8 +44,6 @@ namespace BlogDAL.Repository
 
         public void Update(TEntity item)
         {
-
-            dbSet.Attach(item);
             context.Entry(item).State = EntityState.Modified;
             context.SaveChanges();
         }

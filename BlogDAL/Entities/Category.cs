@@ -17,7 +17,6 @@ namespace BlogDAL.Entities
         public string Description { get; set; }
         public string Image { get; set; }
 
-
         ICollection<Post> Posts { get; set; }
     }
 }

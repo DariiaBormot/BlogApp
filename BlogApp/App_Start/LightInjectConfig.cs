@@ -35,7 +35,6 @@ namespace BlogApp.App_Start
             container.Register<ITagService, TagService>();
             container.Register<ICommentService, CommentService>();
 
-
             container.EnableMvc();
         }
     }

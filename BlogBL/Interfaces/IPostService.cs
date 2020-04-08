@@ -7,13 +7,7 @@ using System.Threading.Tasks;
 
 namespace BlogBL.Interfaces
 {
-    public interface IPostService
+    public interface IPostService : IGenereicService<PostModel>
     {
-        IEnumerable<PostModel> GetAll();
-        void Create(PostModel item);
-        void Update(PostModel item);
-        void Delete(int id);
-        PostModel GetById(int id);
-
     }
 }

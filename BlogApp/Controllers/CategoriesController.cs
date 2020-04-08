@@ -2,19 +2,16 @@
 using BlogApp.Models;
 using BlogBL.Interfaces;
 using BlogBL.Models;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace BlogApp.Controllers
 {
     public class CategoriesController : Controller
     {
-        private ICategoryService _service;
-
-        private IMapper _mapper;
+        private readonly ICategoryService _service;
+        private readonly IMapper _mapper;
 
         public CategoriesController(ICategoryService service, IMapper mapper)
         {
@@ -26,6 +23,7 @@ namespace BlogApp.Controllers
         {
             var categoriesBL = _service.GetAll().ToList();
             var categoriesPL = _mapper.Map<IEnumerable<CategoryViewModel>>(categoriesBL);
+
             return View(categoriesPL);
         }
 
@@ -33,6 +31,7 @@ namespace BlogApp.Controllers
         {
             var categoriesBL = _service.GetById(id);
             var categoriesPL = _mapper.Map<CategoryViewModel>(categoriesBL);
+
             return View(categoriesPL);
         }
 
@@ -52,8 +51,10 @@ namespace BlogApp.Controllers
                 {
                     return View(model);
                 }
+
                 var modelBL = _mapper.Map<CategoryModel>(model);
                 _service.Create(modelBL);
+
                 return RedirectToAction("Index");
             }
             catch
@@ -80,6 +81,7 @@ namespace BlogApp.Controllers
                 }
                 var modelBL = _mapper.Map<CategoryModel>(model);
                 _service.Update(modelBL);
+
                 return RedirectToAction("Index");
             }
             catch

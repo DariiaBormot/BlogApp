@@ -24,6 +24,7 @@ namespace BlogApp.Controllers
         {
             var postsBL = _service.GetAll().ToList();
             var postsPL = _mapper.Map<IEnumerable<PostViewModel>>(postsBL);
+
             return View(postsPL);
         }
 
@@ -31,6 +32,7 @@ namespace BlogApp.Controllers
         {
             var postsBL = _service.GetById(id);
             var postsPL = _mapper.Map<PostViewModel>(postsBL);
+
             return View(postsPL);
         }
 
@@ -50,8 +52,10 @@ namespace BlogApp.Controllers
                 {
                     return View(model);
                 }
+
                 var modelBL = _mapper.Map<PostModel>(model);
                 _service.Create(modelBL);
+
                 return RedirectToAction("Index");
             }
             catch
@@ -76,8 +80,10 @@ namespace BlogApp.Controllers
                 {
                     return View(model);
                 }
+
                 var modelBL = _mapper.Map<PostModel>(model);
                 _service.Update(modelBL);
+
                 return RedirectToAction("Index");
             }
             catch

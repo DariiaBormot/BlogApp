@@ -9,6 +9,7 @@ namespace BlogApp.Models
     public class TagViewModel
     {
         public int Id { get; set; }
+
         [Required]
         public string Name { get; set; }
         public IEnumerable<PostViewModel> Posts { get; set; }

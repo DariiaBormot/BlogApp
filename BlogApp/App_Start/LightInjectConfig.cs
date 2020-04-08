@@ -3,13 +3,8 @@ using BlogBL.Configs;
 using BlogBL.Interfaces;
 using BlogBL.Services;
 using LightInject;
-using LightInject.Mvc;
-using LightInject.WebApi;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
-using System.Web;
 
 namespace BlogApp.App_Start
 {

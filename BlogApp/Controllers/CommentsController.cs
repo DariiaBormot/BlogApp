@@ -45,8 +45,10 @@ namespace BlogApp.Controllers
                 {
                     return View(model);
                 }
+
                 var modelBL = _mapper.Map<CommentModel>(model);
                 _service.Create(modelBL);
+
                 return RedirectToAction("Index");
             }
             catch
@@ -71,8 +73,10 @@ namespace BlogApp.Controllers
                 {
                     return View(model);
                 }
+
                 var modelBL = _mapper.Map<CommentModel>(model);
                 _service.Update(modelBL);
+
                 return RedirectToAction("Index");
             }
             catch

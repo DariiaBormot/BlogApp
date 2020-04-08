@@ -26,6 +26,7 @@ namespace BlogApp.Controllers
         {
             var usersBL = _service.GetAll().ToList();
             var usersPL = _mapper.Map<IEnumerable<UserViewModel>>(usersBL);
+
             return View(usersPL);
         }
 
@@ -34,6 +35,7 @@ namespace BlogApp.Controllers
         {
             var usersBL = _service.GetById(id);
             var usersPL = _mapper.Map<UserViewModel>(usersBL);
+
             return View(usersPL);
         }
 
@@ -53,8 +55,10 @@ namespace BlogApp.Controllers
                 {
                     return View(model);
                 }
+
                 var modelBL = _mapper.Map<UserModel>(model);
                 _service.Create(modelBL);
+
                 return RedirectToAction("Index");
             }
             catch
@@ -79,8 +83,10 @@ namespace BlogApp.Controllers
                 {
                     return View(model);
                 }
+
                 var modelBL = _mapper.Map<UserModel>(model);
                 _service.Update(modelBL);
+
                 return RedirectToAction("Index");
             }
             catch

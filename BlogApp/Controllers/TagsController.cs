@@ -26,6 +26,7 @@ namespace BlogApp.Controllers
         {
             var categoriesBL = _service.GetAll().ToList();
             var categoriesPL = _mapper.Map<IEnumerable<TagViewModel>>(categoriesBL);
+
             return View(categoriesPL);
         }
 
@@ -46,8 +47,10 @@ namespace BlogApp.Controllers
                 {
                     return View(model);
                 }
+
                 var modelBL = _mapper.Map<TagModel>(model);
                 _service.Create(modelBL);
+
                 return RedirectToAction("Index");
             }
             catch
@@ -72,8 +75,10 @@ namespace BlogApp.Controllers
                 {
                     return View(model);
                 }
+
                 var modelBL = _mapper.Map<TagModel>(model);
                 _service.Update(modelBL);
+
                 return RedirectToAction("Index");
             }
             catch

@@ -13,7 +13,8 @@ namespace BlogBL.Models
         public string Body { get; set; }
         public string Image { get; set; }
         public int UserId { get; set; }
-        public IEnumerable<CategoryBL> Categories { get; set; }
+        public int CategoryId { get; set; }
+        public IEnumerable<TagBL> Tags { get; set; }
         public IEnumerable<CommentBL> Comments { get; set; }
     }
 }

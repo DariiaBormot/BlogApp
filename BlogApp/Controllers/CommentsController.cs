@@ -24,7 +24,7 @@ namespace BlogApp.Controllers
 
         public ActionResult Index()
         {
-            var postsBL = _service.GetAll().ToList();
+            var postsBL = _service.GetAll();
             var postsPL = _mapper.Map<IEnumerable<CommentViewModel>>(postsBL);
             return View(postsPL);
         }
@@ -45,7 +45,7 @@ namespace BlogApp.Controllers
                 {
                     return View(model);
                 }
-                var modelBL = _mapper.Map<CommentModel>(model);
+                var modelBL = _mapper.Map<CommentBL>(model);
                 _service.Create(modelBL);
                 return RedirectToAction("Index");
             }
@@ -71,7 +71,7 @@ namespace BlogApp.Controllers
                 {
                     return View(model);
                 }
-                var modelBL = _mapper.Map<CommentModel>(model);
+                var modelBL = _mapper.Map<CommentBL>(model);
                 _service.Update(modelBL);
                 return RedirectToAction("Index");
             }

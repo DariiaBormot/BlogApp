@@ -11,7 +11,6 @@ namespace BlogDAL.Entities
         public Post()
         {
             Tags = new List<Tag>();
-            Categories = new List<Category>();
             Comments = new List<Comment>();
         }
         public int Id { get; set; }
@@ -19,10 +18,12 @@ namespace BlogDAL.Entities
         public string Body { get; set; }
         public string Image { get; set; }
 
+
+        public Category Category { get; set; }
+        public int CategoryId { get; set; }
         public int UserId { get; set; }
         public User User { get; set; }
         public ICollection<Tag> Tags { get; set; }
-        public ICollection<Category> Categories { get; set; }
         public ICollection<Comment> Comments { get; set; }
     }
 }

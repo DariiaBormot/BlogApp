@@ -11,5 +11,6 @@ namespace BlogApp.Models
         public int Id { get; set; }
         [Required]
         public string Body { get; set; }
+
     }
 }

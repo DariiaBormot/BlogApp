@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BlogBL.Interfaces
 {
-    public interface IUserService : IGenereicService<UserModel>
+    public interface IUserService : IGenereicService<UserBL>
     {
     }
 }

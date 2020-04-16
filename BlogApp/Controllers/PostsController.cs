@@ -20,11 +20,18 @@ namespace BlogApp.Controllers
             _mapper = mapper;
         }
 
-        public ActionResult Index()
+        public ActionResult Index(int page = 1)
         {
-            var postsBL = _service.GetAll().ToList();
+            int pageSize = 4;
+
+            var postsBL = _service.GetAll();
             var postsPL = _mapper.Map<IEnumerable<PostViewModel>>(postsBL);
-            return View(postsPL);
+
+            var postsPerPage = postsPL.Skip((page - 1) * pageSize).Take(pageSize);
+            var pageInfo = new PageInfo { PageNumber = page, ItemsOnPage = pageSize, TotalItems = postsPL.Count() };
+            var paginationView = new BlogPostPaginationView { PageInfo = pageInfo, Posts = postsPerPage };
+
+            return View(paginationView);
         }
 
         public ActionResult Details(int id)
@@ -50,7 +57,7 @@ namespace BlogApp.Controllers
                 {
                     return View(model);
                 }
-                var modelBL = _mapper.Map<PostModel>(model);
+                var modelBL = _mapper.Map<BlogPostBL>(model);
                 _service.Create(modelBL);
                 return RedirectToAction("Index");
             }
@@ -76,7 +83,7 @@ namespace BlogApp.Controllers
                 {
                     return View(model);
                 }
-                var modelBL = _mapper.Map<PostModel>(model);
+                var modelBL = _mapper.Map<BlogPostBL>(model);
                 _service.Update(modelBL);
                 return RedirectToAction("Index");
             }

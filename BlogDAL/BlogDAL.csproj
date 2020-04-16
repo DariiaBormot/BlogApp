@@ -51,17 +51,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entities\BlogInitializer.cs" />
     <Compile Include="Entities\Category.cs" />
     <Compile Include="Entities\Comment.cs" />
     <Compile Include="Entities\Post.cs" />
     <Compile Include="Interfaces\IGenericRepository.cs" />
-    <Compile Include="Migrations\202004031027266_InitialCreate.cs" />
-    <Compile Include="Migrations\202004031027266_InitialCreate.designer.cs">
-      <DependentUpon>202004031027266_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202004080616213_AddedEmail.cs" />
-    <Compile Include="Migrations\202004080616213_AddedEmail.designer.cs">
-      <DependentUpon>202004080616213_AddedEmail.cs</DependentUpon>
+    <Compile Include="Migrations\202004161106194_InitialCreate.cs" />
+    <Compile Include="Migrations\202004161106194_InitialCreate.designer.cs">
+      <DependentUpon>202004161106194_InitialCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="PostContext.cs" />
@@ -80,11 +77,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202004031027266_InitialCreate.resx">
-      <DependentUpon>202004031027266_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202004080616213_AddedEmail.resx">
-      <DependentUpon>202004080616213_AddedEmail.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202004161106194_InitialCreate.resx">
+      <DependentUpon>202004161106194_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

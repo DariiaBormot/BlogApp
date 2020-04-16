@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BlogBL.Interfaces
 {
-    public interface ICategoryService : IGenereicService<CategoryModel>
+    public interface ICategoryService : IGenereicService<CategoryBL>
     {
     }
 }

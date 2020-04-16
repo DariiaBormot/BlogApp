@@ -13,20 +13,20 @@ namespace BlogBL.Configs
     {
         public BLAutomapperProfile()
         {
-            CreateMap<CategoryModel, Category>().ReverseMap();
-            CreateMap<Category, CategoryModel>().ReverseMap();
+            CreateMap<CategoryBL, Category>().ReverseMap();
+            CreateMap<Category, CategoryBL>().ReverseMap();
 
-            CreateMap<CommentModel, Comment>().ReverseMap();
-            CreateMap<Comment, CommentModel>().ReverseMap();
+            CreateMap<CommentBL, Comment>().ReverseMap();
+            CreateMap<Comment, CommentBL>().ReverseMap();
 
-            CreateMap<PostModel, Post>().ReverseMap();
-            CreateMap<Post, PostModel>().ReverseMap();
+            CreateMap<BlogPostBL, Post>().ReverseMap();
+            CreateMap<Post, BlogPostBL>().ReverseMap();
 
-            CreateMap<TagModel, Tag>().ReverseMap();
-            CreateMap<Tag, TagModel>().ReverseMap();
+            CreateMap<TagBL, Tag>().ReverseMap();
+            CreateMap<Tag, TagBL>().ReverseMap();
 
-            CreateMap<UserModel, User>().ReverseMap();
-            CreateMap<User, UserModel>().ReverseMap();
+            CreateMap<UserBL, User>().ReverseMap();
+            CreateMap<User, UserBL>().ReverseMap();
         }
     }
 }

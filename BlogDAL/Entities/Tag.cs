@@ -8,14 +8,10 @@ namespace BlogDAL.Entities
 {
     public class Tag
     {
-        public Tag()
-        {
-            Posts = new List<Post>();
-        }
         public int Id { get; set; }
         public string Name { get; set; }
 
-        ICollection<Post> Posts { get; set; }
+        public ICollection<Post> Posts { get; set; }
 
     }
 }

@@ -1,9 +1,11 @@
 ﻿using AutoMapper;
 using BlogApp.App_Start;
 using BlogBL.Models;
+using BlogDAL;
 using BlogDAL.Entities;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Http;
@@ -22,9 +24,7 @@ namespace BlogApp
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
-
             LightInjectConfig.Congigurate();
-
 
 
         }

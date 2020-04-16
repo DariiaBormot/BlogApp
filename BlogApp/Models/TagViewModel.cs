@@ -11,6 +11,6 @@ namespace BlogApp.Models
         public int Id { get; set; }
         [Required]
         public string Name { get; set; }
-        public IEnumerable<PostViewModel> Posts { get; set; }
+
     }
 }

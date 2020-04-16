@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace BlogBL.Services
 {
-    public class PostService : GenericService<PostModel, Post>, IPostService
+    public class PostService : GenericService<BlogPostBL, Post>, IPostService
     {
         private IMapper _mapper;
         public PostService(IGenericRepository<Post> repository, IMapper mapper) : base(repository)
@@ -20,22 +20,22 @@ namespace BlogBL.Services
             _mapper = mapper;
         }
 
-        public override PostModel Map(Post entity)
+        public override BlogPostBL Map(Post entity)
         {
-            return _mapper.Map<PostModel>(entity);
+            return _mapper.Map<BlogPostBL>(entity);
         }
 
-        public override Post Map(PostModel blmodel)
+        public override Post Map(BlogPostBL blmodel)
         {
             return _mapper.Map<Post>(blmodel);
         }
 
-        public override IEnumerable<PostModel> Map(IList<Post> entities)
+        public override IEnumerable<BlogPostBL> Map(IList<Post> entities)
         {
-            return _mapper.Map<IEnumerable<PostModel>>(entities);
+            return _mapper.Map<IEnumerable<BlogPostBL>>(entities);
         }
 
-        public override IEnumerable<Post> Map(IList<PostModel> models)
+        public override IEnumerable<Post> Map(IList<BlogPostBL> models)
         {
             return _mapper.Map<IEnumerable<Post>>(models);
         }

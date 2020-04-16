@@ -27,6 +27,7 @@ namespace BlogDAL.Repository
 
         public IEnumerable<TEntity> GetAll()
         {
+
             return dbSet.AsNoTracking().ToList();
         }
 

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BlogBL.Interfaces
 {
-    public interface ICommentService : IGenereicService<CommentModel>
+    public interface ICommentService : IGenereicService<CommentBL>
     {
     }
 }

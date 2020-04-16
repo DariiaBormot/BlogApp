@@ -15,9 +15,9 @@ namespace BlogApp.Models
         public string LastName { get; set; }
         public string Avatar { get; set; }
         [DataType(DataType.Date)]
-        public DateTime RegistrationDate { get; set; }
+        public DateTime Birthday { get; set; }
         [EmailAddress]
         public string Email { get; set; }
-        public IEnumerable<PostViewModel> Posts { get; set; }
+
     }
 }

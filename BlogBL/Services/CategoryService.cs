@@ -11,29 +11,29 @@ using System.Threading.Tasks;
 
 namespace BlogBL.Services
 {
-    public class CategoryService : GenericService<CategoryModel, Category>, ICategoryService
+    public class CategoryService : GenericService<CategoryBL, Category>, ICategoryService
     {
         private IMapper _mapper;
         public CategoryService(IGenericRepository<Category> repository, IMapper mapper) : base(repository)
         {
             _mapper = mapper;
         }
-        public override CategoryModel Map(Category entity)
+        public override CategoryBL Map(Category entity)
         {
-            return _mapper.Map<CategoryModel>(entity);
+            return _mapper.Map<CategoryBL>(entity);
         }
 
-        public override Category Map(CategoryModel blmodel)
+        public override Category Map(CategoryBL blmodel)
         {
             return _mapper.Map<Category>(blmodel);
         }
 
-        public override IEnumerable<CategoryModel> Map(IList<Category> entities)
+        public override IEnumerable<CategoryBL> Map(IList<Category> entities)
         {
-            return _mapper.Map<IEnumerable<CategoryModel>>(entities);
+            return _mapper.Map<IEnumerable<CategoryBL>>(entities);
         }
 
-        public override IEnumerable<Category> Map(IList<CategoryModel> models)
+        public override IEnumerable<Category> Map(IList<CategoryBL> models)
         {
             return _mapper.Map<IEnumerable<Category>>(models);
         }

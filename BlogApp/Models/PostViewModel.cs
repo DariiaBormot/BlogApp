@@ -15,7 +15,6 @@ namespace BlogApp.Models
         public string Body { get; set; }
         public string Image { get; set; }
         public int UserId { get; set; }
-        public IEnumerable<CategoryViewModel> Categories { get; set; }
-        public IEnumerable<CommentViewModel> Comments { get; set; }
+
     }
 }

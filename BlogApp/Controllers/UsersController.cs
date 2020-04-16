@@ -2,6 +2,7 @@
 using BlogApp.Models;
 using BlogBL.Interfaces;
 using BlogBL.Models;
+using PagedList;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,12 +22,24 @@ namespace BlogApp.Controllers
             _service = service;
             _mapper = mapper;
         }
+
         // GET: User
-        public ActionResult Index()
+        //public ActionResult Index()
+        //{
+        //    var usersBL = _service.GetAll();
+        //    var usersPL = _mapper.Map<IEnumerable<UserViewModel>>(usersBL);
+        //    return View(usersPL);
+
+        //}
+
+        public ActionResult Index(int? page)
         {
-            var usersBL = _service.GetAll().ToList();
+            var usersBL = _service.GetAll();
             var usersPL = _mapper.Map<IEnumerable<UserViewModel>>(usersBL);
-            return View(usersPL);
+
+            int pageSize = 4;
+            int pageNumber = (page ?? 1);
+            return View(usersPL.ToPagedList(pageNumber, pageSize));
         }
 
         // GET: User/Details/5
@@ -53,7 +66,7 @@ namespace BlogApp.Controllers
                 {
                     return View(model);
                 }
-                var modelBL = _mapper.Map<UserModel>(model);
+                var modelBL = _mapper.Map<UserBL>(model);
                 _service.Create(modelBL);
                 return RedirectToAction("Index");
             }
@@ -79,7 +92,7 @@ namespace BlogApp.Controllers
                 {
                     return View(model);
                 }
-                var modelBL = _mapper.Map<UserModel>(model);
+                var modelBL = _mapper.Map<UserBL>(model);
                 _service.Update(modelBL);
                 return RedirectToAction("Index");
             }

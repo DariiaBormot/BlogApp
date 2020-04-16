@@ -13,20 +13,20 @@ namespace BlogApp.App_Start
     {
         public WebAutomapperProfile()
         {
-            CreateMap<CategoryModel, CategoryViewModel>().ReverseMap();
-            CreateMap<CategoryViewModel, CategoryModel>().ReverseMap();
+            CreateMap<CategoryBL, CategoryViewModel>().ReverseMap();
+            CreateMap<CategoryViewModel, CategoryBL>().ReverseMap();
 
-            CreateMap<CommentModel, CommentViewModel>().ReverseMap();
-            CreateMap<CommentViewModel, CommentModel>().ReverseMap();
+            CreateMap<CommentBL, CommentViewModel>().ReverseMap();
+            CreateMap<CommentViewModel, CommentBL>().ReverseMap();
 
-            CreateMap<PostModel, PostViewModel>().ReverseMap();
-            CreateMap<PostViewModel, PostModel>().ReverseMap();
+            CreateMap<BlogPostBL, PostViewModel>().ReverseMap();
+            CreateMap<PostViewModel, BlogPostBL>().ReverseMap();
 
-            CreateMap<TagModel, TagViewModel>().ReverseMap();
-            CreateMap<TagViewModel, TagModel>().ReverseMap();
+            CreateMap<TagBL, TagViewModel>().ReverseMap();
+            CreateMap<TagViewModel, TagBL>().ReverseMap();
 
-            CreateMap<UserModel, UserViewModel>().ReverseMap();
-            CreateMap<UserViewModel, UserModel>().ReverseMap();
+            CreateMap<UserBL, UserViewModel>().ReverseMap();
+            CreateMap<UserViewModel, UserBL>().ReverseMap();
 
         }
     }

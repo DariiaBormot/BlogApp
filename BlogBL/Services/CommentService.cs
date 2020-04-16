@@ -11,29 +11,29 @@ using System.Threading.Tasks;
 
 namespace BlogBL.Services
 {
-    public class CommentService : GenericService<CommentModel, Comment>, ICommentService
+    public class CommentService : GenericService<CommentBL, Comment>, ICommentService
     {
         private IMapper _mapper;
         public CommentService(IGenericRepository<Comment> repository, IMapper mapper) : base(repository)
         {
             _mapper = mapper;
         }
-        public override CommentModel Map(Comment entity)
+        public override CommentBL Map(Comment entity)
         {
-            return _mapper.Map<CommentModel>(entity);
+            return _mapper.Map<CommentBL>(entity);
         }
 
-        public override Comment Map(CommentModel blmodel)
+        public override Comment Map(CommentBL blmodel)
         {
             return _mapper.Map<Comment>(blmodel);
         }
 
-        public override IEnumerable<CommentModel> Map(IList<Comment> entities)
+        public override IEnumerable<CommentBL> Map(IList<Comment> entities)
         {
-            return _mapper.Map<IEnumerable<CommentModel>>(entities);
+            return _mapper.Map<IEnumerable<CommentBL>>(entities);
         }
 
-        public override IEnumerable<Comment> Map(IList<CommentModel> models)
+        public override IEnumerable<Comment> Map(IList<CommentBL> models)
         {
             return _mapper.Map<IEnumerable<Comment>>(models);
         }

@@ -46,7 +46,7 @@ namespace BlogApp.Controllers
                 {
                     return View(model);
                 }
-                var modelBL = _mapper.Map<TagModel>(model);
+                var modelBL = _mapper.Map<TagBL>(model);
                 _service.Create(modelBL);
                 return RedirectToAction("Index");
             }
@@ -72,7 +72,7 @@ namespace BlogApp.Controllers
                 {
                     return View(model);
                 }
-                var modelBL = _mapper.Map<TagModel>(model);
+                var modelBL = _mapper.Map<TagBL>(model);
                 _service.Update(modelBL);
                 return RedirectToAction("Index");
             }

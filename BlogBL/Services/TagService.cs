@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace BlogBL.Services
 {
-    public class TagService : GenericService<TagModel, Tag>, ITagService
+    public class TagService : GenericService<TagBL, Tag>, ITagService
     {
         private IMapper _mapper;
 
@@ -20,22 +20,22 @@ namespace BlogBL.Services
             _mapper = mapper;
         }
 
-        public override TagModel Map(Tag entity)
+        public override TagBL Map(Tag entity)
         {
-            return _mapper.Map<TagModel>(entity);
+            return _mapper.Map<TagBL>(entity);
         }
 
-        public override Tag Map(TagModel blmodel)
+        public override Tag Map(TagBL blmodel)
         {
             return _mapper.Map<Tag>(blmodel);
         }
 
-        public override IEnumerable<TagModel> Map(IList<Tag> entities)
+        public override IEnumerable<TagBL> Map(IList<Tag> entities)
         {
-            return _mapper.Map<IEnumerable<TagModel>>(entities);
+            return _mapper.Map<IEnumerable<TagBL>>(entities);
         }
 
-        public override IEnumerable<Tag> Map(IList<TagModel> models)
+        public override IEnumerable<Tag> Map(IList<TagBL> models)
         {
             return _mapper.Map<IEnumerable<Tag>>(models);
         }

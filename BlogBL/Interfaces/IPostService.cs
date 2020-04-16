@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BlogBL.Interfaces
 {
-    public interface IPostService : IGenereicService<PostModel>
+    public interface IPostService : IGenereicService<BlogPostBL>
     {
     }
 }

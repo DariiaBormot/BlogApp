@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace BlogBL.Services
 {
-    public class UserService : GenericService<UserModel, User>, IUserService
+    public class UserService : GenericService<UserBL, User>, IUserService
     {
         private IMapper _mapper;
         public UserService(IGenericRepository<User> repository, IMapper mapper) : base(repository)
@@ -21,22 +21,22 @@ namespace BlogBL.Services
         }
 
 
-        public override UserModel Map(User entity)
+        public override UserBL Map(User entity)
         {
-            return _mapper.Map<UserModel>(entity);
+            return _mapper.Map<UserBL>(entity);
         }
 
-        public override User Map(UserModel blmodel)
+        public override User Map(UserBL blmodel)
         {
             return _mapper.Map<User>(blmodel);
         }
 
-        public override IEnumerable<UserModel> Map(IList<User> entities)
+        public override IEnumerable<UserBL> Map(IList<User> entities)
         {
-            return _mapper.Map<IEnumerable<UserModel>>(entities);
+            return _mapper.Map<IEnumerable<UserBL>>(entities);
         }
 
-        public override IEnumerable<User> Map(IList<UserModel> models)
+        public override IEnumerable<User> Map(IList<UserBL> models)
         {
             return _mapper.Map<IEnumerable<User>>(models);
         }

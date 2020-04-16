@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BlogBL.Interfaces
 {
-    public interface ITagService : IGenereicService<TagModel>
+    public interface ITagService : IGenereicService<TagBL>
     {
     }
 }

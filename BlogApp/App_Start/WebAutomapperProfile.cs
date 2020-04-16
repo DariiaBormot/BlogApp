@@ -15,8 +15,6 @@ namespace BlogApp.App_Start
         {
             CreateMap<CategoryBL, CategoryViewModel>().ReverseMap();
 
-            CreateMap<CommentBL, CommentViewModel>().ReverseMap();
-
             CreateMap<BlogPostBL, PostViewModel>().ReverseMap();
 
             CreateMap<TagBL, TagViewModel>().ReverseMap();

@@ -11,8 +11,8 @@ namespace BlogBL.Configs
             CreateMap<CategoryBL, Category>().ReverseMap();
             CreateMap<Category, CategoryBL>().ReverseMap();
 
-            CreateMap<CommentBL, Comment>().ReverseMap();
-            CreateMap<Comment, CommentBL>().ReverseMap();
+            //CreateMap<CommentBL, Comment>().ReverseMap();
+            //CreateMap<Comment, CommentBL>().ReverseMap();
 
             CreateMap<BlogPostBL, Post>().ReverseMap();
             CreateMap<Post, BlogPostBL>().ReverseMap();

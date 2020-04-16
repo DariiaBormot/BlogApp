@@ -16,6 +16,5 @@ namespace BlogBL.Models
         public string Email { get; set; }
 
         public IEnumerable<BlogPostBL> Posts { get; set; }
-        public IEnumerable<CommentBL> Comments { get; set; }
     }
 }

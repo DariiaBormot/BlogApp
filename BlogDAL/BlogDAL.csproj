@@ -53,12 +53,15 @@
   <ItemGroup>
     <Compile Include="Entities\BlogInitializer.cs" />
     <Compile Include="Entities\Category.cs" />
-    <Compile Include="Entities\Comment.cs" />
     <Compile Include="Entities\Post.cs" />
     <Compile Include="Interfaces\IGenericRepository.cs" />
     <Compile Include="Migrations\202004161106194_InitialCreate.cs" />
     <Compile Include="Migrations\202004161106194_InitialCreate.designer.cs">
       <DependentUpon>202004161106194_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004161957024_DeltedComments.cs" />
+    <Compile Include="Migrations\202004161957024_DeltedComments.designer.cs">
+      <DependentUpon>202004161957024_DeltedComments.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="PostContext.cs" />
@@ -79,6 +82,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202004161106194_InitialCreate.resx">
       <DependentUpon>202004161106194_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004161957024_DeltedComments.resx">
+      <DependentUpon>202004161957024_DeltedComments.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

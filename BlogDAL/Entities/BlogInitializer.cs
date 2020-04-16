@@ -116,36 +116,11 @@ namespace BlogDAL.Entities
             Tag tag1 = new Tag { Name = "#guyritchie" };
             Tag tag2 = new Tag { Name = "#tarantino" };
             Tag tag3 = new Tag { Name = "#christophernolan" };
-            //Tag tag4 = new Tag { Name = "#killbill", PostId = 2 };
-            //Tag tag5 = new Tag { Name = "#snatch", PostId = 1 };
-            //Tag tag6 = new Tag { Name = "#inbruges", PostId = 4 };
-            //Tag tag7 = new Tag { Name = "#pulpfiction", PostId = 3 };
-            //Tag tag8 = new Tag { Name = "#marvel", PostId = 2 };
-            //Tag tag9 = new Tag { Name = "#dc", PostId = 1 };
 
             context.Tags.Add(tag1);
             context.Tags.Add(tag2);
             context.Tags.Add(tag3);
-            //context.Tags.Add(tag4);
-            //context.Tags.Add(tag5);
-            //context.Tags.Add(tag6);
-            //context.Tags.Add(tag7);
-            //context.Tags.Add(tag8);
-            //context.Tags.Add(tag9);
-            context.SaveChanges();
 
-
-            var comment1 = new Comment { Body = "Cool one", PostId = 1, UserId = 2 };
-            var comment2 = new Comment { Body = "don't like this one", PostId = 2, UserId = 3 };
-            var comment3 = new Comment { Body = "great plot", PostId = 3, UserId = 4 };
-            var comment4 = new Comment { Body = "the best cast I've ever seen", PostId = 4, UserId = 5 };
-            var comment5 = new Comment { Body = "What a pity cast", PostId = 1, UserId = 5 };
-
-            context.Comments.Add(comment1);
-            context.Comments.Add(comment2);
-            context.Comments.Add(comment3);
-            context.Comments.Add(comment4);
-            context.Comments.Add(comment5);
             context.SaveChanges();
 
             base.Seed(context);

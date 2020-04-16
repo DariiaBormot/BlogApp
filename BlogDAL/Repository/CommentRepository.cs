@@ -2,7 +2,7 @@
 
 namespace BlogDAL.Repository
 {
-    class CommentRepository : GenericRepository<Comment>
-    {
-    }
+    //class CommentRepository : GenericRepository<Comment>
+    //{
+    //}
 }

@@ -1,4 +1,8 @@
-﻿@model BlogApp.Models.BlogPostPaginationView
+﻿@*@model BlogApp.Models.BlogPostPaginationView*@
+
+@model PagedList.IPagedList<BlogApp.Models.PostViewModel>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 
 
 @{
@@ -10,7 +14,7 @@
     @Html.ActionLink("Create New", "Create")
 </p>
 
-@foreach (var item in Model.Posts)
+@foreach (var item in Model)
 {
 
     <div class="container">
@@ -35,6 +39,10 @@
     <p></p>
 }
 
-<div class="btn-group">
+Страница @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) из @Model.PageCount
+
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+
+@*<div class="btn-group">
     @Html.PageLinks(Model.PageInfo, x => Url.Action("Index", new { page = x }))
-</div>
+</div>*@

@@ -32,7 +32,6 @@ namespace BlogWebAPI.App_Start
             container.Register<IUserService, UserService>();
             container.Register<ICategoryService, CategoryService>();
             container.Register<ITagService, TagService>();
-            container.Register<ICommentService, CommentService>();
 
             container.EnablePerWebRequestScope();
             container.EnableWebApi(GlobalConfiguration.Configuration);

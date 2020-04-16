@@ -5,33 +5,41 @@ using BlogBL.Models;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
+using PagedList;
+using BlogApp.Services;
 
 namespace BlogApp.Controllers
 {
     public class PostsController : Controller
     {
-        private IPostService _service;
+        private readonly IPostService _service;
+        private readonly IMapper _mapper;
+        private readonly IArticleApiService _articleService;
 
-        private IMapper _mapper;
-
-        public PostsController(IPostService service, IMapper mapper)
+        public PostsController(IPostService service, IMapper mapper, IArticleApiService articleService)
         {
             _service = service;
             _mapper = mapper;
+            _articleService = articleService;
         }
 
-        public ActionResult Index(int page = 1)
+        public ActionResult Index(int? page = 1)
         {
-            int pageSize = 4;
-
             var postsBL = _service.GetAll();
             var postsPL = _mapper.Map<IEnumerable<PostViewModel>>(postsBL);
 
-            var postsPerPage = postsPL.Skip((page - 1) * pageSize).Take(pageSize);
-            var pageInfo = new PageInfo { PageNumber = page, ItemsOnPage = pageSize, TotalItems = postsPL.Count() };
-            var paginationView = new BlogPostPaginationView { PageInfo = pageInfo, Posts = postsPerPage };
+            //var articleResponce = _articleService.GetArticles();
 
-            return View(paginationView);
+            int pageSize = 4;
+            int pageNumber = (page ?? 1);
+            return View(postsPL.ToPagedList(pageNumber, pageSize));
+
+
+            //int pageSize = 4;
+            //var postsPerPage = postsPL.Skip((page - 1) * pageSize).Take(pageSize);
+            //var pageInfo = new PageInfo { PageNumber = page, ItemsOnPage = pageSize, TotalItems = postsPL.Count() };
+            //var paginationView = new BlogPostPaginationView { PageInfo = pageInfo, Posts = postsPerPage };
+            //return View(paginationView);
         }
 
         public ActionResult Details(int id)

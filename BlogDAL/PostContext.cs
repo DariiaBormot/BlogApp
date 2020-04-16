@@ -21,31 +21,11 @@ namespace BlogDAL
         }
 
         public DbSet<Category> Categories { get; set; }
-        public DbSet<Comment> Comments { get; set; }
+        //public DbSet<Comment> Comments { get; set; }
         public DbSet<Post> Posts { get; set; }
         public DbSet<Tag> Tags { get; set; }
         public DbSet<User> Users { get; set; }
 
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        {
-            modelBuilder.Entity<User>()
-               .HasMany(p => p.Posts)
-               .WithRequired(p => p.User);
-
-            modelBuilder.Entity<User>()
-                .HasMany(p => p.Comments)
-                .WithRequired(p => p.User);
-
-            modelBuilder.Entity<Post>()
-                .HasMany(x => x.Comments)
-                .WithRequired(x => x.Post);
-
-            modelBuilder.Entity<Category>()
-                .HasMany(x => x.Posts)
-                .WithRequired(x => x.Category);
-
-
-        }
     }
 
 }

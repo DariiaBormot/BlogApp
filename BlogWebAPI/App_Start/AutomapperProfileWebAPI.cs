@@ -14,8 +14,6 @@ namespace BlogWebAPI.App_Start
         {
             CreateMap<CategoryBL, CategoryData>().ReverseMap();
 
-            CreateMap<CommentBL, CommentData>().ReverseMap();
-
             CreateMap<BlogPostBL, BlogPostData>().ReverseMap();
 
             CreateMap<TagBL, TagData>().ReverseMap();

@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using BlogApp.Services;
 using BlogBL.Configs;
 using BlogBL.Interfaces;
 using BlogBL.Services;
@@ -28,7 +29,8 @@ namespace BlogApp.App_Start
             container.Register<IUserService, UserService>();
             container.Register<ICategoryService, CategoryService>();
             container.Register<ITagService, TagService>();
-            container.Register<ICommentService, CommentService>();
+            //container.Register<ICommentService, CommentService>();
+            container.Register<IArticleApiService, ArticleApiService>();
 
             container.EnableMvc();
         }

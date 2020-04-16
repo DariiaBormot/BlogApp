@@ -9,11 +9,14 @@ namespace BlogApp.Models
     public class UserViewModel
     {
         public int Id { get; set; }
+
         [MinLength(2), Required]
         public string FirstName { get; set; }
+
         [MinLength(2), Required]
         public string LastName { get; set; }
         public string Avatar { get; set; }
+
         [DataType(DataType.Date)]
         public DateTime Birthday { get; set; }
         [EmailAddress]

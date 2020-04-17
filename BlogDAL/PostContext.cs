@@ -15,16 +15,31 @@ namespace BlogDAL
         {
             Database.SetInitializer<PostContext>(new BlogInitializer());
         }
-        public PostContext() : base(@"Data Source=.\MSSQLSERVER1;Initial Catalog=BlogDB;Integrated Security=True") 
+        public PostContext() : base(@"Data Source=.\MSSQLSERVER1;Initial Catalog=BlogDataD;Integrated Security=True") 
         {
 
         }
 
         public DbSet<Category> Categories { get; set; }
-        //public DbSet<Comment> Comments { get; set; }
         public DbSet<Post> Posts { get; set; }
         public DbSet<Tag> Tags { get; set; }
         public DbSet<User> Users { get; set; }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<User>()
+               .HasMany(p => p.Posts)
+               .WithRequired(p => p.User);
+
+            modelBuilder.Entity<Category>()
+                .HasMany(x => x.Posts)
+                .WithRequired(x => x.Category)
+                .HasForeignKey(x => x.CategoryId);
+
+            modelBuilder.Entity<Tag>()
+                .HasMany(x => x.Posts);
+
+        }
 
     }
 

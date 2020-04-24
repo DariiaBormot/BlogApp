@@ -9,7 +9,7 @@ namespace BlogApp.Services
 {
     public interface IArticleApiService
     {
-        ArticleResponce GetArticles();
+        IEnumerable<ArticleResponce> GetArticles();
     }
     public class ArticleApiService : IArticleApiService
     {
@@ -19,11 +19,11 @@ namespace BlogApp.Services
             _restClient = new RestClient("http://local.blogapi");
         }
 
-        public ArticleResponce GetArticles()
+        public IEnumerable<ArticleResponce> GetArticles()
         {
             var apiURL = "api/blogposts";
             var request = new RestRequest(apiURL);
-            var responceData = _restClient.Execute<ArticleResponce>(request, Method.GET).Data;
+            var responceData = _restClient.Execute<List<ArticleResponce>>(request, Method.GET).Data;
             return responceData;
         }
     }

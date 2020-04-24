@@ -4,5 +4,6 @@ namespace BlogBL.Interfaces
 {
     public interface ICategoryService : IGenereicService<CategoryBL>
     {
+
     }
 }

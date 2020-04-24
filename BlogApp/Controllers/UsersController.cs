@@ -13,9 +13,8 @@ namespace BlogApp.Controllers
 {
     public class UsersController : Controller
     {
-        private IUserService _service;
-
-        private IMapper _mapper;
+        private readonly IUserService _service;
+        private readonly IMapper _mapper;
 
         public UsersController(IUserService service, IMapper mapper)
         {

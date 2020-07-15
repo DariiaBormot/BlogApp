@@ -51,7 +51,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Entities\BlogInitializer.cs" />
+    <Compile Include="BlogInitializer.cs" />
     <Compile Include="Entities\Category.cs" />
     <Compile Include="Entities\Post.cs" />
     <Compile Include="Interfaces\IGenericRepository.cs" />

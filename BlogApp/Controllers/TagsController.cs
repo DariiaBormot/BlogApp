@@ -30,13 +30,11 @@ namespace BlogApp.Controllers
         }
 
 
-        // GET: Post/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Post/Create
         [HttpPost]
         public ActionResult Create(TagViewModel model)
         {
@@ -51,13 +49,11 @@ namespace BlogApp.Controllers
 
         }
 
-        // GET: Post/Edit/5
         public ActionResult Edit(int id)
         {
             return View();
         }
 
-        // POST: Post/Edit/5
         [HttpPost]
         public ActionResult Edit(int id, TagViewModel model)
         {
@@ -72,13 +68,11 @@ namespace BlogApp.Controllers
 
         }
 
-        // GET: Post/Delete/5
         public ActionResult Delete(int id)
         {
             return View();
         }
 
-        // POST: Post/Delete/5
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)
         {

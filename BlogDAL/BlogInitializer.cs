@@ -21,7 +21,7 @@ namespace BlogDAL.Entities
             var user6 = new User { FirstName = "Wanda", LastName = "Maximoff", Birthday = new DateTime(1950, 7, 20), Email = "wanda@gmail.com", Avatar = "~/assets/images/wanda.png" };
             var user7 = new User { FirstName = "Peter", LastName = "Parker", Birthday = new DateTime(1950, 7, 20), Email = "peter@gmail.com", Avatar = "~/assets/images/peter.png" };
             var user8 = new User { FirstName = "Stephen", LastName = "Strange", Birthday = new DateTime(1950, 7, 20), Email = "strange@gmail.com", Avatar = "~/assets/images/thor.png" };
-            var user9 = new User { FirstName = "Peter", LastName = "Quill", Birthday = new DateTime(1950, 7, 20), Email = "quill@gmail.com", Avatar = "~/assets/images/starlord.png" };
+            var user9 = new User { FirstName = "Peter", LastName = "Quill", Birthday = new DateTime(1950, 7, 20), Email = "quill@gmail.com", Avatar = "~/assets/images/thor.png" };
 
             context.Users.Add(user1);
             context.Users.Add(user2);

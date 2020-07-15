@@ -11,13 +11,10 @@ namespace BlogDAL
 {
     public class PostContext : DbContext
     {
-        static PostContext()
-        {
-            Database.SetInitializer<PostContext>(new BlogInitializer());
-        }
+
         public PostContext() : base(@"Data Source=.\MSSQLSERVER1;Initial Catalog=BlogDataD;Integrated Security=True") 
         {
-
+            //Database.SetInitializer<PostContext>(new BlogInitializer());
         }
 
         public DbSet<Category> Categories { get; set; }

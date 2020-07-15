@@ -1,10 +1,12 @@
 ﻿using AutoMapper;
+using BlogApp.Helpers;
 using BlogApp.Models;
 using BlogBL.Interfaces;
 using BlogBL.Models;
 using PagedList;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -22,14 +24,17 @@ namespace BlogApp.Controllers
             _mapper = mapper;
         }
 
-        public ActionResult Index(int? page)
+        public ActionResult Index()
+        {
+            return View();
+        }
+
+        public ActionResult ViewAll()
         {
             var usersBL = _service.GetAll();
             var usersPL = _mapper.Map<IEnumerable<UserViewModel>>(usersBL);
 
-            int pageSize = 4;
-            int pageNumber = (page ?? 1);
-            return View(usersPL.ToPagedList(pageNumber, pageSize));
+            return View(usersPL);
         }
 
 
@@ -43,32 +48,54 @@ namespace BlogApp.Controllers
 
         public ActionResult Create()
         {
-            return View();
+            var newUser = new UserViewModel();
+            return View(newUser);
         }
 
 
         [HttpPost]
-        public ActionResult Create(UserViewModel model)
+        public ActionResult Create(UserViewModel user)
         {
-            if (!ModelState.IsValid)
+            try
             {
-                return View(model);
-            }
-            var modelBL = _mapper.Map<UserBL>(model);
-            _service.Create(modelBL);
-            return RedirectToAction("Index");
+                if (!ModelState.IsValid)
+                {
+                    return View(user);
+                }
+                if (user.ImageUpload != null)
+                {
+                    var fileName = Path.GetFileNameWithoutExtension(user.ImageUpload.FileName);
+                    var extension = Path.GetExtension(user.ImageUpload.FileName);
+                    fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
+                    user.Avatar = "~/assets/uploadImages/" + fileName;
+                    user.ImageUpload.SaveAs(Path.Combine(Server.MapPath("~/assets/uploadImages/"), fileName));
+                }
 
+                var modelBL = _mapper.Map<UserBL>(user);
+                _service.Create(modelBL);
+
+                var users = _service.GetAll();
+                var usersPL = _mapper.Map<IEnumerable<UserViewModel>>(users);
+
+                return Json(new { success = true, html = RenderRazorViewToHtml.RenderRazorViewToString(this, "ViewAll", usersPL), message = "Submitted Successfully " }, JsonRequestBehavior.AllowGet);
+            }
+            catch(Exception ex)
+            {
+                return Json(new { success = false, message = ex.Message });
+            }
         }
 
 
         public ActionResult Edit(int id)
         {
-            return View();
+            var userToEdit = _service.GetById(id);
+            var userPL = _mapper.Map<UserViewModel>(userToEdit);
+            return View(userPL);
         }
 
 
         [HttpPost]
-        public ActionResult Edit(int id, UserViewModel model)
+        public ActionResult Edit(UserViewModel model)
         {
 
             if (!ModelState.IsValid)
@@ -77,21 +104,29 @@ namespace BlogApp.Controllers
             }
             var modelBL = _mapper.Map<UserBL>(model);
             _service.Update(modelBL);
-            return RedirectToAction("Index");
+
+            var users = _service.GetAll();
+            var usersPL = _mapper.Map<IEnumerable<UserViewModel>>(users);
+
+            return Json(new { success = true, html = RenderRazorViewToHtml.RenderRazorViewToString(this, "ViewAll", usersPL), message = "Edited Successfully " }, JsonRequestBehavior.AllowGet);
 
         }
 
- 
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
 
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Delete(int id)
         {
-            _service.Delete(id);
-            return RedirectToAction("Index");
+            try
+            {
+                _service.Delete(id);
+                var users = _service.GetAll();
+                var usersPL = _mapper.Map<IEnumerable<UserViewModel>>(users);
+                return Json(new { success = true, html = RenderRazorViewToHtml.RenderRazorViewToString(this, "ViewAll", usersPL), message = "Deleted Successfully " }, JsonRequestBehavior.AllowGet);
+            }
+            catch(Exception ex)
+            {
+                return Json(new { success = false, message = ex.Message });
+            }
 
         }
     }

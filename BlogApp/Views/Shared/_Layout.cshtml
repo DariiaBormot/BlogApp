@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
-    <script src="https://kit.fontawesome.com/0750c13946.js" crossorigin="anonymous"></script>
     @Scripts.Render("~/bundles/modernizr")
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -29,31 +29,15 @@
     </div>
     <div class="container body-content">
         @RenderBody()
-        <hr />
-        @*<footer>
-            <div class="row">
-                <div class="col-sm-4">
-                    <h4>Categories</h4>
-                    <p>
-                       Categories to add
-                    </p>
-                </div>
-                <div class="col-sm-4">
-                    <h4>Information</h4>
-                    <p>About us</p>
-                    <p>FAQ</p>
-                </div>
 
-                <div class="col-sm-4">
-                    <h4>Connect</h4>
-                    <p>Connection to add</p>
-                </div>
-            </div>
-        </footer>*@
+        <hr />
     </div>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+    <script src="~/Scripts/JQueryAxaxCrudScript.js"></script>
+    <script src="~/Scripts/notify.min.js"></script>
+    <script src="https://kit.fontawesome.com/0750c13946.js" crossorigin="anonymous"></script>
 </body>
 </html>
